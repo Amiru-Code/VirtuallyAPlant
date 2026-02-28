@@ -1,6 +1,0 @@
-[package]
-name = "Virtually_A_Plant"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
