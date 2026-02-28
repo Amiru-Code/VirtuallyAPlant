@@ -17,15 +17,16 @@
             <h2>How to improve your code?</h2>
             <p>Based on our analysis, here are some tips to make your "plant" even stronger:</p>
             
+            <!-- show the numeric score for this category -->
+            <p><strong>Your Cleanliness score:</strong> <span id="score-detail">—</span></p>
+
             <div class="tips-grid">
                 <div class="tip-item">
                     <h3>💡 Tip #1</h3>
-                    <!--Change the next-->
                     <p>Remove unused variables and dead code to reduce clutter.</p>
                 </div>
                 <div class="tip-item">
                     <h3>💡 Tip #2</h3>
-                    <!--Change the next-->
                     <p>Use meaningful names for functions and classes.</p>
                 </div>
             </div>
@@ -33,6 +34,31 @@
             <a href="../Homepage/index.html" class="back-btn">← Back to Plant</a>
         </section>
     </main>
+    <!-- load data for this page -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const stored = localStorage.getItem('lastResult');
+      if (!stored) return;
+      try {
+        const data = JSON.parse(stored);
+        const score = data.cleanliness;
+        const notes = (data.notes || []).filter(n => n.kind && n.kind.startsWith('cleanliness'));
+        document.getElementById('score-detail').textContent = String(score ?? '—');
+        // optionally append advice or notes below
+        if (notes.length) {
+          const ul = document.createElement('ul');
+          notes.forEach(n => {
+            const li = document.createElement('li');
+            li.textContent = n.msg;
+            ul.appendChild(li);
+          });
+          document.querySelector('.info-card').appendChild(ul);
+        }
+      } catch (e) {
+        console.error('bad stored result', e);
+      }
+    });
+    </script>
 
     <footer class="main-footer">
         <div class="footer-links">

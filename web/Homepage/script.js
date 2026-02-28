@@ -82,10 +82,37 @@ submitBtn.addEventListener('click', async () => {
 
     const result = await res.json();
     // result has: cleanliness, correctness, structure, overall, notes (from backend)
-    // === NEW: render category scores ===
+
+    // save the last judgement for detail pages
+    try {
+      localStorage.setItem('lastResult', JSON.stringify(result));
+    } catch (e) {
+      console.warn('could not write result to localStorage', e);
+    }
+
+    // === render category scores ===
     if (scoreCleanEl)   scoreCleanEl.textContent   = String(result.cleanliness ?? '—');
     if (scoreCorrectEl) scoreCorrectEl.textContent = String(result.correctness ?? '—');
     if (scoreStructEl)  scoreStructEl.textContent  = String(result.structure  ?? '—');
+
+    // show advice messages if present
+    const adviceCleanEl = document.getElementById('advice-clean');
+    const adviceCorrectEl = document.getElementById('advice-correct');
+    const adviceStructEl = document.getElementById('advice-structure');
+    if (result.notes && Array.isArray(result.notes)) {
+      result.notes.forEach(n => {
+        if (!n.kind || !n.msg) return;
+        if (n.kind === 'cleanliness_advice' && adviceCleanEl) {
+          adviceCleanEl.textContent = n.msg;
+        }
+        if (n.kind === 'correctness_advice' && adviceCorrectEl) {
+          adviceCorrectEl.textContent = n.msg;
+        }
+        if (n.kind === 'structure_advice' && adviceStructEl) {
+          adviceStructEl.textContent = n.msg;
+        }
+      });
+    }
 
     // Keep using the OVERALL super-score for growth animation
     updatePlantUI(result.overall ?? 0);

@@ -63,17 +63,24 @@
   
   <div id="category-scores" style="margin-top:10px; font-size:0.95rem;">
   <div style="display:flex; gap:12px; flex-wrap:wrap;">
-    <a href="../Cleanliness/details.html" class="score-detail-link">
-        <strong>Cleanliness:</strong> <span id="score-clean">—</span>
-    </a>
-    <a href="../Correctness/details.html" class="score-detail-link">
-        <strong>Correctness:</strong> <span id="score-correct">—</span>
-    </a>
-    <a href="../Structure/details.html" class="score-detail-link">
-        <strong>Structure:</strong> <span id="score-structure">—</span>
-    </a>
-  </div>
-</div>
+    <div>
+      <a href="../Cleanliness/details.html" class="score-detail-link" target="_blank" rel="noopener">
+          <strong>Cleanliness:</strong> <span id="score-clean">—</span>
+      </a>
+      <div class="advice-text" id="advice-clean"></div>
+    </div>
+    <div>
+      <a href="../Correctness/details.html" class="score-detail-link" target="_blank" rel="noopener">
+          <strong>Correctness:</strong> <span id="score-correct">—</span>
+      </a>
+      <div class="advice-text" id="advice-correct"></div>
+    </div>
+    <div>
+      <a href="../Structure/details.html" class="score-detail-link" target="_blank" rel="noopener">
+          <strong>Structure:</strong> <span id="score-structure">—</span>
+      </a>
+      <div class="advice-text" id="advice-structure"></div>
+    </div>
 
   <div id="plant-wrapper">
     <svg viewBox="0 0 200 200" id="plant-svg">
