@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<he
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtually Plant</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Virtually Plant</h1>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="intro-section">
+            <h2>Intro: what this web do</h2>
+        </section>
+
+        <section class="upload-section">
+            <label for="file-upload" class="custom-upload">
+                <span class="upload-text">Upload File</span>
+                <span class="file-types-info">Sinalizar tipos de arquivo (.java, .py, etc.)</span>
+            </label>
+            <input type="file" id="file-upload" accept=".java,.py,.js,.html,.css" />
+            
+            <button type="button" class="submit-button">Submit</button>
+        </section>
+
+        <section class="plant-display">
+            <div id="planta-container">
+                <svg viewBox="0 0 200 200" id="planta-svg">
+                    <path d="M60 140 L140 140 L130 180 L70 180 Z" class="vaso" />
+                    
+                    <line id="caule" x1="100" y1="140" x2="100" y2="140" />
+                    
+                    <g id="folhas-grupo"></g>
+                    
+                    <circle id="flor" cx="100" cy="140" r="0" />
+                </svg>
+            </div>
+            
+            <div class="score-display">
+                <span id="nota-display">XX</span>%
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <nav>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
