@@ -2,6 +2,10 @@ use crate::models::Note;
 use super::language::Language;
 
 pub fn score_correctness(code: &str, lang: &Language, notes: &mut Vec<Note>) -> u32 {
+    // The correctness module originally started at 100 and added/subtracted
+    // deltas from various heuristics.  To make it fairer across long vs short
+    // submissions we compute the raw score then convert it into an "errors per
+    // line" penalty and rescale to 0..100, similar to the other categories.
     let mut score: i32 = 100;
 
     let open = code.matches('{').count();
@@ -39,5 +43,10 @@ pub fn score_correctness(code: &str, lang: &Language, notes: &mut Vec<Note>) -> 
         _ => {}
     }
 
-    score.clamp(0, 100) as u32
+    // clamp first, then compute normalized value based on line count
+    let raw = score.clamp(0, 100) as i32;
+    let errors = 100 - raw; // how far below perfect we are; positive means issues
+    let total_lines = code.lines().count().max(1) as f32;
+    let score_f = 100.0 - (errors as f32 * 100.0 / total_lines);
+    score_f.clamp(0.0, 100.0) as u32
 }

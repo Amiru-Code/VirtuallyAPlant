@@ -9,9 +9,11 @@ mod structure;
 pub use language::Language;
 
 /// Compute every category score and also append human-readable advice notes
-/// based on twenty‑point intervals.  The score-to-advice mapping lives in
-/// `add_insight`, which pushes an extra note indicating what the student
-/// should work on.
+/// based on twenty‑point intervals.  Each component now returns a per-line
+/// averaged score (0..100) so that longer submissions are judged by the
+/// density of issues rather than the absolute count.  The score-to-advice
+/// mapping lives in `add_insight`, which pushes an extra note indicating what
+/// the student should work on.
 pub fn compute_all(code: &str, lang: Language, max_line_len: usize) -> (JudgeResp, StatusCode) {
     let mut notes: Vec<Note> = Vec::new();
 
