@@ -1,0 +1,159 @@
+:root {
+    --black-florest: #0D400D;
+    --golden-pollen: #FFC30E;
+    --blaze-orange: #FF6200;
+    --frosted-blue: #22c6d4;
+    --pot-color: #8d6e63;
+    --font: black;
+    --second-font: #424B54;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Degradê de cima para baixo */
+    background: linear-gradient(180deg, #02A2FF 0%, #22c6d4 65%, #D8FEFF 100%);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Header & Footer */
+.main-header, .main-footer {
+    background-color: var(--black-florest);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-links a { color: white; text-decoration: none; font-size: 0.9rem; }
+
+/* Main Horizontal Container */
+.container {
+    flex: 1;
+    display: flex; /* Coloca os lados lado a lado */
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+/* Lado Esquerdo */
+.left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 45%;
+}
+
+/* --- Box de Upload Retangular (Estilo Painel Solar) --- */
+.upload-box {
+    background-color: var(--golden-pollen);
+    
+    /* Retangular com cantos suavizados, como no wireframe */
+    border-radius: 20px; 
+    
+    /* Tamanho retangular, equilibrado para o layout horizontal */
+    width: 320px;
+    height: 240px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    padding: 25px;
+    
+    position: relative; 
+    overflow: hidden; /* Mantém as ondas dentro do box */
+    
+    /* --- A Mágica da Borda em Degradê --- */
+    /* Criamos uma borda transparente e usamos um background-image para o degradê */
+    border: 8px solid transparent;
+    background-image: linear-gradient(var(--golden-pollen), var(--golden-pollen)), 
+                      linear-gradient(135deg, var(--blaze-orange), #FFDD00, var(--blaze-orange));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    
+    /* --- Sombra Expansiva (Raios de Sol) --- */
+    /* Uma sombra laranja-amarelada bem difusa e ampla */
+    box-shadow: 0 0 60px 10px rgba(255, 165, 0, 0.4);
+
+    transition: all 0.4s ease-out;
+}
+
+/* 3. Nova Animação: Pulsa o Tamanho E a Sombra (Raios) */
+@keyframes sun-master-pulse {
+    0% { 
+        transform: scale(1);
+        box-shadow: 0 0 50px 10px rgba(255, 165, 0, 0.3); 
+    }
+    50% { 
+        transform: scale(1.05); /* O movimento de 'pulso' está aqui */
+        box-shadow: 0 0 80px 25px rgba(255, 200, 0, 0.6); 
+    }
+    100% { 
+        transform: scale(1);
+        box-shadow: 0 0 50px 10px rgba(255, 165, 0, 0.3); 
+    }
+}
+
+/* 4. Vase color in SVG */
+.vase {
+    fill: var(--pot-color) !important; /* Força a nova cor do vaso */
+}
+
+.upload-box {
+    animation: sun-master-pulse 5s infinite ease-in-out;
+}
+
+/* --- Hover Effect (passar o mouse) --- */
+.upload-box:hover {
+    transform: scale(1.03) translateY(-5px); /* Sobe levemente */
+    /* A sombra fica ainda mais intensa no hover */
+    box-shadow: 0 0 90px 25px rgba(255, 215, 0, 0.7);
+}
+
+.upload-title { font-weight: bold; font-size: 1.5rem; color: var(--second-font); }
+.file-info { font-size: 0.8rem; margin-top: 10px; color: rgba(0,0,0,0.6); }
+
+.submit-btn {
+    background-color: var(--font);
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Lado Direito */
+.right-side {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-container {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--font);
+    margin-bottom: 10px;
+}
+
+#plant-svg {
+    width: 350px; /* Planta maior no layout horizontal */
+    height: 350px;
+}
+
+#file-upload { display: none; }

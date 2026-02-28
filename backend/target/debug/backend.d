@@ -1,1 +1,1 @@
-C:\Users\angla\Downloads\VirtuallyAPlant\backend\target\debug\backend.exe: C:\Users\angla\Downloads\VirtuallyAPlant\backend\src\main.rs
+/home/cjen/Desktop/VirtuallyAPlant2/VirtuallyAPlant/backend/target/debug/backend: /home/cjen/Desktop/VirtuallyAPlant2/VirtuallyAPlant/backend/src/main.rs

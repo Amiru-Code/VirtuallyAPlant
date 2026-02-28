@@ -112,6 +112,19 @@ struct ScoreResult {
     structure: u32,
     overall: u32,
 }
+async fn judge_get() -> Html<&'static str> {
+    Html(r#"
+        <form method="POST" action="/judge">
+          <textarea name="code" rows="8" cols="60">// paste code here</textarea><br>
+          <button type="submit">Judge</button>
+        </form>
+    "#)
+}
+
+let app = Router::new()
+    .route("/judge", get(judge_get).post(judge_handler)) // allow both
+    .layer(cors);
+
 
 #[tokio::main]
 async fn main() {

@@ -1,31 +1,20 @@
 const stem = document.getElementById('caule');
 const scoreDisplay = document.getElementById('nota-display');
 const leavesGroup = document.getElementById('folhas-grupo');
-const flower = document.getElementById('flor');
+const flower = document.getElementById('flower');
 const fileInput = document.getElementById('file-upload');
 const submitBtn = document.querySelector('.submit-button');
-const flowerGroup = document.getElementById('flower-group');
+
 // Event listener for the Submit button
-submitBtn.addEventListener('click', async () => {
-    if (fileInput.files.length === 0) {
+submitBtn.addEventListener('click', () => {
+    if (fileInput.files.length > 0) {
+        // Simulation: generate a score from 0 to 100
+        // In the hackathon, this will come from your backend API
+        const randomScore = Math.floor(Math.random() * 101);
+        updatePlantUI(100);
+    } else {
         alert("Please select a file first!");
-        return;
     }
-
-    const file = fileInput.files[0];
-    const text = await file.text();
-
-    // Send the file text to Rust backend
-    const response = await fetch("http://localhost:3000/judge", {
-        method: "POST",
-        headers: { "Content-Type": "text/plain" },
-        body: text
-    });
-
-    const result = await response.json();
-
-    // Use the overall score from Rust
-    updatePlantUI(result.overall);
 });
 
 function updatePlantUI(score) {
@@ -66,10 +55,6 @@ function updatePlantUI(score) {
     }
 
     // 4. Show flower if score is 100
-if (score === 100) {
-    flowerGroup.style.opacity = 1;
-    flowerGroup.setAttribute("transform", `translate(100, ${heightY})`);
-} else {
-    flowerGroup.style.opacity = 0;
-}
+    flower.setAttribute("r", score === 100 ? 12 : 0);
+    flower.setAttribute("cy", heightY);
 }
