@@ -5,10 +5,6 @@ const fileInput    = document.getElementById('file-upload');
 const submitBtn    = document.querySelector('.submit-btn');
 const scoreDisplay = document.getElementById('score-value');
 
-const stem         = document.getElementById('stem');
-const leavesGroup  = document.getElementById('leaves-group');
-const flower       = document.getElementById('flower');
-
 // NEW: fields for category scores
 const scoreCleanEl   = document.getElementById('score-clean');
 const scoreCorrectEl = document.getElementById('score-correct');
@@ -130,43 +126,17 @@ submitBtn.addEventListener('click', async () => {
 function updatePlantUI(score) {
   score = Math.max(0, Math.min(100, Number(score) || 0));
 
-  // Update super-score text
+  // Update score text
   if (scoreDisplay) scoreDisplay.textContent = String(score);
 
-  // Map overall -> plant visuals
-  const heightY = 140 - score; // 0 -> 140, 100 -> 40
-  const healthy = score >= 50;
-  const color   = healthy ? '#2ecc71' : '#a0522d';
+  // Convert 0–100 into 1–10 bucket
+  // 100–90 = 10, 89–80 = 9, ..., 9–0 = 1
+  const stage = Math.max(1, Math.ceil(score / 10));
 
-  if (stem) {
-    stem.setAttribute('y2', String(heightY));
-    stem.setAttribute('stroke', color);
-  }
+  // Build filename (plant1.png → plant10.png)
+  const imageName = `img\plant${stage}.png`;
 
-  if (leavesGroup) {
-    leavesGroup.innerHTML = '';
-    if (score > 20) {
-      const leafCount = Math.floor(score / 10);
-      for (let i = 0; i < leafCount; i++) {
-        const side = i % 2 === 0 ? 1 : -1;
-        const yPos = 140 - (i * 12);
-        const cx   = 100 + 8 * side;
-
-        const leaf = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
-        leaf.setAttribute('cx', String(cx));
-        leaf.setAttribute('cy', String(yPos));
-        leaf.setAttribute('rx', '10');
-        leaf.setAttribute('ry', '5');
-        leaf.setAttribute('fill', color);
-        // Better reliability on SVG: transform attribute
-        leaf.setAttribute('transform', `rotate(${25 * side} ${cx} ${yPos})`);
-        leavesGroup.appendChild(leaf);
-      }
-    }
-  }
-
-  if (flower) {
-    flower.setAttribute('r', score === 100 ? '8' : '0');
-    flower.setAttribute('cy', String(heightY));
-  }
+  // Swap the image
+  const img = document.getElementById("plant-image");
+  if (img) img.src = imageName;
 }
