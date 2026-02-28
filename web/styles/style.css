@@ -3,7 +3,7 @@
     --golden-pollen: #FFC30E;
     --blaze-orange: #FF6200;
     --frosted-blue: #22c6d4;
-    --pot-color: #8d6e63;
+    --pot-color: #b26042;
     --font: black;
     --second-font: #424B54;
 }
@@ -55,16 +55,12 @@ body {
 }
 
 /* --- Box de Upload Retangular (Estilo Painel Solar) --- */
+/* --- Box de Upload (O Sol) --- */
 .upload-box {
     background-color: var(--golden-pollen);
-    
-    /* Retangular com cantos suavizados, como no wireframe */
     border-radius: 20px; 
-    
-    /* Tamanho retangular, equilibrado para o layout horizontal */
     width: 320px;
     height: 240px;
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,23 +68,56 @@ body {
     cursor: pointer;
     text-align: center;
     padding: 25px;
-    
     position: relative; 
-    overflow: hidden; /* Mantém as ondas dentro do box */
+    overflow: hidden; /* Garante que o código fique dentro do sol */
     
-    /* --- A Mágica da Borda em Degradê --- */
-    /* Criamos uma borda transparente e usamos um background-image para o degradê */
+    /* Borda em Degradê */
     border: 8px solid transparent;
     background-image: linear-gradient(var(--golden-pollen), var(--golden-pollen)), 
                       linear-gradient(135deg, var(--blaze-orange), #FFDD00, var(--blaze-orange));
     background-origin: border-box;
     background-clip: padding-box, border-box;
     
-    /* --- Sombra Expansiva (Raios de Sol) --- */
-    /* Uma sombra laranja-amarelada bem difusa e ampla */
+    /* Sombra e Transição */
     box-shadow: 0 0 60px 10px rgba(255, 165, 0, 0.4);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: sun-master-pulse 5s infinite ease-in-out;
+}
 
-    transition: all 0.4s ease-out;
+/* Estado Expandido */
+.upload-box.expanded {
+    width: 480px;  /* Aumentei um pouco para caber melhor o código */
+    height: 380px; 
+    padding: 20px;
+    justify-content: flex-start; /* Joga o código para o topo */
+}
+
+/* Controlando o que aparece/some */
+.upload-box.expanded .upload-title, 
+.upload-box.expanded .file-info {
+    display: none;
+}
+
+#file-content {
+    display: none; /* Escondido por padrão */
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 15, 20, 0.9); /* Fundo escuro */
+    color: #e3e8ef;
+    padding: 15px;
+    border-radius: 10px;
+    overflow: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    text-align: left;
+    white-space: pre-wrap; /* Evita que o código saia para os lados */
+    word-wrap: break-word;
+    border: 1px solid var(--blaze-orange);
+    margin-top: 10px;
+}
+
+.upload-box.expanded #file-content {
+    display: block !important; /* Mostra apenas quando expandido */
 }
 
 /* 3. Nova Animação: Pulsa o Tamanho E a Sombra (Raios) */
@@ -121,6 +150,25 @@ body {
     transform: scale(1.03) translateY(-5px); /* Sobe levemente */
     /* A sombra fica ainda mais intensa no hover */
     box-shadow: 0 0 90px 25px rgba(255, 215, 0, 0.7);
+}
+
+/* Quando o arquivo é carregado, o JS adiciona esta classe */
+.upload-box.expanded {
+    width: 450px;  /* Aumenta a largura */
+    height: 350px; /* Aumenta a altura */
+    padding: 15px;
+    justify-content: flex-start; /* Move o conteúdo para o topo */
+}
+
+/* Esconde os textos iniciais para dar lugar ao código */
+.upload-box.expanded .upload-title, 
+.upload-box.expanded .file-info {
+    display: none;
+}
+
+/* Mostra o código quando expandido */
+.upload-box.expanded #file-content {
+    display: block;
 }
 
 .upload-title { font-weight: bold; font-size: 1.5rem; color: var(--second-font); }
@@ -157,6 +205,22 @@ body {
 }
 
 #file-upload { display: none; }
+
+#file-content {
+    display: none; /* Escondido até carregar o arquivo */
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 15, 20, 0.85); /* Fundo escuro elegante */
+    color: #e3e8ef;
+    padding: 15px;
+    border-radius: 10px;
+    overflow: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    text-align: left;
+    z-index: 5;
+    border: 1px solid var(--blaze-orange);
+}
 
 /* Estilo para os links de detalhes do score */
 .score-detail-link {

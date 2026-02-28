@@ -1,6 +1,8 @@
 // script.js — show category scores + use overall for plant growth
 
 // Elements (matching index.html)
+const uploadBox = document.querySelector('.upload-box');
+
 const fileInput    = document.getElementById('file-upload');
 const submitBtn    = document.querySelector('.submit-btn');
 const scoreDisplay = document.getElementById('score-value');
@@ -26,9 +28,10 @@ const PREVIEW_MAX_LINES = 400;
 if (fileInput) {
   fileInput.addEventListener('change', async () => {
     if (!fileInput.files || fileInput.files.length === 0) {
-      if (previewWrap) previewWrap.style.display = 'none';
+      if (uploadBox) uploadBox.classList.remove('expanded');
       return;
     }
+
     const file = fileInput.files[0];
 
     if (metaEl) {
@@ -36,16 +39,21 @@ if (fileInput) {
       metaEl.textContent = `${file.name} — ${kb} KB`;
     }
 
-    if (contentEl && previewWrap) {
+    if (contentEl) {
       const blob = file.size > PREVIEW_MAX_BYTES ? file.slice(0, PREVIEW_MAX_BYTES) : file;
       const text = await blob.text();
       let lines = text.split(/\r?\n/);
+
       if (lines.length > PREVIEW_MAX_LINES) {
         lines = lines.slice(0, PREVIEW_MAX_LINES);
         lines.push('…(truncated for preview)…');
       }
+
       contentEl.textContent = lines.join('\n'); // safe (no HTML execution)
-      previewWrap.style.display = 'block';
+
+      if (uploadBox) {
+        uploadBox.classList.add('expanded');
+      }
     }
   });
 }
