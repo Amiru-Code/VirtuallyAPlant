@@ -140,9 +140,14 @@ function updatePlantUI(score) {
   // Convert 0–100 into 1–10 bucket
   // 100–90 = 10, 89–80 = 9, ..., 9–0 = 1
   const stage = Math.max(1, Math.ceil(score / 10));
+  let num = Math.abs(10 - stage);
 
+  console.log(num)
+  if (num === 0) {
+  num = 1;
+}
   // Build filename (plant1.png → plant10.png)
-  const imageName = `img\plant${stage}.png`;
+  const imageName = `img/plant${num}.png`;
 
   // Swap the image
   const img = document.getElementById("plant-image");
