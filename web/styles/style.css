@@ -40,9 +40,73 @@ body {
 .container {
     flex: 1;
     display: flex; /* Coloca os lados lado a lado */
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     padding: 20px;
+    gap: 20px;
+    max-width: 12000px;
+    margin: 0 auto;
+    width: 100%;
+}
+/* Lista de Scores Vertical */
+#category-scores div {
+    display: flex;
+    flex-direction: column; /* Força a lista vertical */
+    gap: 12px;
+    align-items: center; /* Centraliza os botões no lado direito */
+}
+
+.score-detail-link {
+    text-decoration: none;
+    color: var(--font);
+    background: rgba(255, 255, 255, 0.4);
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    width: 180px; /* Tamanho fixo para todos ficarem iguais */
+    text-align: center;
+    backdrop-filter: blur(5px); /* Efeito de vidro para ficar moderno */
+}
+
+/* --- RESPONSIVIDADE (A Mágica acontece aqui) --- */
+
+/* Para Telas Médias (Tablets) */
+@media (max-width: 992px) {
+    .container {
+        gap: 10px;
+    }
+    .upload-box {
+        width: 280px;
+        height: 210px;
+    }
+    #plant-svg {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+/* Para Celulares (Smartphones) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* No celular, um embaixo do outro é inevitável para caber */
+        justify-content: flex-start;
+        padding-top: 40px;
+    }
+    
+    .left-side, .right-side {
+        width: 100%; /* Ocupa a largura total no mobile */
+    }
+
+    .upload-box.expanded {
+        width: 90vw; /* Sol expande quase na largura total da tela do celular */
+        height: 300px;
+    }
+    
+    .intro-text h3 {
+        font-size: 1.1rem;
+    }
 }
 
 /* Lado Esquerdo */
