@@ -36,19 +36,32 @@ pub fn compute_all(code: &str, lang: Language, max_line_len: usize) -> (JudgeRes
 /// note.  Each twenty‑point bucket gets its own message so that callers of the
 /// API receive a quick hint about what to improve.
 fn add_insight(score: u32, category: &str, notes: &mut Vec<Note>) {
-    let advice = match category {
-        "cleanliness" => match score {
-            0..=19 => "Cleanliness is critically low; lots of trailing whitespace,
-                        inconsistent indentation, or extremely long lines.".to_string(),
-            20..=39 => "Poor cleanliness: fix trailing spaces and respect the max
-                        line length.".to_string(),
-            40..=59 => "Fair cleanliness; consider removing duplicate blank lines
-                        and normalizing indentation.".to_string(),
-            60..=79 => "Good cleanliness; keep lines short and avoid needless
-                        whitespace.".to_string(),
-            80..=100 => "Excellent cleanliness! Minor polish only.".to_string(),
-            _ => "Cleanliness score uncertain.".to_string(),
-        },
+    "cleanliness" => match score {
+    0..=19 =>
+        "Cleanliness is very low: many lines end with stray spaces or tabs, and several lines exceed the allowed length. Remove trailing whitespace and wrap long lines to improve readability."
+            .to_string(),
+
+    20..=39 =>
+        "Cleanliness is poor: noticeable trailing whitespace and multiple lines longer than the maximum length. Clean up whitespace and break long lines into smaller pieces."
+            .to_string(),
+
+    40..=59 =>
+        "Cleanliness is fair: occasional trailing spaces and some lines are longer than recommended. Trim unnecessary whitespace and try to keep lines within the length limit."
+            .to_string(),
+
+    60..=79 =>
+        "Cleanliness is good: only a few long lines or trailing spaces detected. Keep trimming line‑end whitespace and maintain concise, readable lines."
+            .to_string(),
+
+    80..=100 =>
+        "Excellent cleanliness! No significant trailing whitespace or long lines detected. Only small stylistic polish might remain."
+            .to_string(),
+
+    _ =>
+        "Cleanliness score uncertain."
+            .to_string(),
+},
+
         "correctness" => match score {
             0..=19 => "Correctness very low: syntax errors or major logic issues.
                         Run the code and address all compile/runtime errors.".to_string(),
