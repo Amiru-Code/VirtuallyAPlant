@@ -48,7 +48,54 @@ body {
     max-width: 12000px;
     margin: 0 auto;
     width: 100%;
+
+    /* Prepara para as nuvens flutuarem aqui dentro */
+    position: relative;
+    overflow: hidden;
 }
+/* --- AS NUVENS SUTIS --- */
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.4); /* Muito sutil: branco semi-transparente */
+    border-radius: 50%; /* Faz o formato arredondado de nuvem */
+    backdrop-filter: blur(8px); /* Efeito de "vidro" que suaviza a borda */
+    z-index: 0; /* Fica atrás do Sol e da Planta */
+    filter: blur(15px); /* Desfoca para não ficar "duro" */
+}
+
+/* Nuvem 1: Maior e mais lenta */
+.container::before {
+    width: 250px;
+    height: 120px;
+    top: 15%;
+    left: -100px; /* Começa fora da tela */
+    animation: move-nuvem 35s infinite linear; /* Bem lenta! */
+    opacity: 0.6;
+}
+
+/* Nuvem 2: Menor, mais alta e mais rápida */
+.container::after {
+    width: 180px;
+    height: 90px;
+    top: 10%;
+    left: -50px; /* Começa fora da tela */
+    animation: move-nuvem 25s infinite linear; /* Mais rápida, mas ainda sutil */
+    opacity: 0.3; /* Mais discreta */
+    transform: scale(0.8);
+}
+
+/* --- ANIMAÇÃO DE MOVIMENTAÇÃO (Lenta e Suave) --- */
+@keyframes move-nuvem {
+    0% {
+        left: -200px; /* Fora da tela à esquerda */
+    }
+    100% {
+        left: 100%; /* Atravessa a tela e some à direita */
+    }
+}
+
 /* Lista de Scores Vertical */
 #category-scores div {
     display: flex;
