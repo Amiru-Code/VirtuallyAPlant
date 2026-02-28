@@ -157,3 +157,25 @@ body {
 }
 
 #file-upload { display: none; }
+
+/* Estilo para os links de detalhes do score */
+.score-detail-link {
+    text-decoration: none; /* Remove o sublinhado */
+    color: var(--font);
+    background: rgba(255, 255, 255, 0.3); /* Fundo sutil para parecer clicável */
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.score-detail-link:hover {
+    background: var(--golden-pollen); /* Muda para a cor do sol ao passar o mouse */
+    border-color: var(--blaze-orange);
+    transform: translateY(-2px); /* Pequeno pulo para dar feedback visual */
+    box-shadow: 0 4px 10px rgba(255, 132, 0, 0.2);
+}
+
+.score-detail-link strong {
+    cursor: pointer;
+}
