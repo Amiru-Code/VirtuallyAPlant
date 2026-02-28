@@ -1,6 +1,8 @@
 #[derive(Debug, Clone, Copy)]
 pub enum Language { Html, Css, Javascript, Python, Rust, Unknown }
 
+
+\\ detects the language being used and uses this information to score the efficiency of the program
 pub fn detect_language(code: &str) -> Language {
     let lower = code.to_lowercase();
     if lower.contains("<html") || lower.contains("<div")     { return Language::Html; }

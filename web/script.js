@@ -1,6 +1,6 @@
-// script.js — preview chosen file + POST to backend, then animate plant
+// script.js — show category scores + use overall for plant growth
 
-// Elements (match your index.html)
+// Elements (matching index.html)
 const fileInput    = document.getElementById('file-upload');
 const submitBtn    = document.querySelector('.submit-btn');
 const scoreDisplay = document.getElementById('score-value');
@@ -9,45 +9,48 @@ const stem         = document.getElementById('stem');
 const leavesGroup  = document.getElementById('leaves-group');
 const flower       = document.getElementById('flower');
 
-// Preview panel
+// NEW: fields for category scores
+const scoreCleanEl   = document.getElementById('score-clean');
+const scoreCorrectEl = document.getElementById('score-correct');
+const scoreStructEl  = document.getElementById('score-structure');
+
+// Optional preview elements (keep if you already added preview)
 const previewWrap  = document.getElementById('file-preview');
 const metaEl       = document.getElementById('file-meta');
 const contentEl    = document.getElementById('file-content');
 
-// Limits for preview (keeps UI snappy on big files)
-const PREVIEW_MAX_BYTES = 150 * 1024;  // 150 KB
+// === (Optional) file preview limits ===
+const PREVIEW_MAX_BYTES = 150 * 1024;
 const PREVIEW_MAX_LINES = 400;
 
-// === File preview when user picks a file ===
-fileInput.addEventListener('change', async () => {
-  if (!fileInput.files || fileInput.files.length === 0) {
-    if (previewWrap) previewWrap.style.display = 'none';
-    return;
-  }
-  const file = fileInput.files[0];
+if (fileInput) {
+  fileInput.addEventListener('change', async () => {
+    if (!fileInput.files || fileInput.files.length === 0) {
+      if (previewWrap) previewWrap.style.display = 'none';
+      return;
+    }
+    const file = fileInput.files[0];
 
-  // Show name + size
-  if (metaEl) {
-    const kb = (file.size / 1024).toFixed(1);
-    metaEl.textContent = `${file.name} — ${kb} KB`;
-  }
+    if (metaEl) {
+      const kb = (file.size / 1024).toFixed(1);
+      metaEl.textContent = `${file.name} — ${kb} KB`;
+    }
 
-  // Read a slice if large
-  const blob = file.size > PREVIEW_MAX_BYTES ? file.slice(0, PREVIEW_MAX_BYTES) : file;
-  const text = await blob.text();
+    if (contentEl && previewWrap) {
+      const blob = file.size > PREVIEW_MAX_BYTES ? file.slice(0, PREVIEW_MAX_BYTES) : file;
+      const text = await blob.text();
+      let lines = text.split(/\r?\n/);
+      if (lines.length > PREVIEW_MAX_LINES) {
+        lines = lines.slice(0, PREVIEW_MAX_LINES);
+        lines.push('…(truncated for preview)…');
+      }
+      contentEl.textContent = lines.join('\n'); // safe (no HTML execution)
+      previewWrap.style.display = 'block';
+    }
+  });
+}
 
-  // Trim lines for rendering, keep safe (no HTML execution)
-  let lines = text.split(/\r?\n/);
-  if (lines.length > PREVIEW_MAX_LINES) {
-    lines = lines.slice(0, PREVIEW_MAX_LINES);
-    lines.push('…(truncated for preview)…');
-  }
-  if (contentEl) contentEl.textContent = lines.join('\n');
-
-  if (previewWrap) previewWrap.style.display = 'block';
-});
-
-// === Submit: send full file text to the Rust backend ===
+// === Submit: send full file text -> backend -> update UI ===
 submitBtn.addEventListener('click', async () => {
   if (!fileInput || !submitBtn) {
     alert('Page not ready: elements not found.');
@@ -64,7 +67,7 @@ submitBtn.addEventListener('click', async () => {
 
   try {
     const file = fileInput.files[0];
-    const text = await file.text(); // full content
+    const text = await file.text();
 
     const res = await fetch('http://localhost:3000/judge', {
       method: 'POST',
@@ -78,8 +81,15 @@ submitBtn.addEventListener('click', async () => {
     }
 
     const result = await res.json();
-    // result: { cleanliness, correctness, structure, overall, notes }
+    // result has: cleanliness, correctness, structure, overall, notes (from backend)
+    // === NEW: render category scores ===
+    if (scoreCleanEl)   scoreCleanEl.textContent   = String(result.cleanliness ?? '—');
+    if (scoreCorrectEl) scoreCorrectEl.textContent = String(result.correctness ?? '—');
+    if (scoreStructEl)  scoreStructEl.textContent  = String(result.structure  ?? '—');
+
+    // Keep using the OVERALL super-score for growth animation
     updatePlantUI(result.overall ?? 0);
+
   } catch (err) {
     console.error(err);
     alert('Could not judge code. Is the Rust server running on port 3000?\n\n' + err);
@@ -89,12 +99,15 @@ submitBtn.addEventListener('click', async () => {
   }
 });
 
-// === Plant animation (same visual logic, reliable SVG transforms) ===
+// === Plant visuals (unchanged, still based on OVERALL) ===
 function updatePlantUI(score) {
   score = Math.max(0, Math.min(100, Number(score) || 0));
+
+  // Update super-score text
   if (scoreDisplay) scoreDisplay.textContent = String(score);
 
-  const heightY = 140 - score;               // 0->140, 100->40
+  // Map overall -> plant visuals
+  const heightY = 140 - score; // 0 -> 140, 100 -> 40
   const healthy = score >= 50;
   const color   = healthy ? '#2ecc71' : '#a0522d';
 
@@ -118,7 +131,7 @@ function updatePlantUI(score) {
         leaf.setAttribute('rx', '10');
         leaf.setAttribute('ry', '5');
         leaf.setAttribute('fill', color);
-        // Use SVG transform attribute for best compatibility
+        // Better reliability on SVG: transform attribute
         leaf.setAttribute('transform', `rotate(${25 * side} ${cx} ${yPos})`);
         leavesGroup.appendChild(leaf);
       }

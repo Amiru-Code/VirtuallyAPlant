@@ -55,18 +55,32 @@
     </section>
 
     <section class="right-side">
-      <div class="score-container">
-        <span id="score-value">XX</span>%
-      </div>
+        <section class="right-side">
+  <div class="score-container">
+    <span id="score-value">XX</span>%
+  </div>
 
-      <div id="plant-wrapper">
-        <svg viewBox="0 0 200 200" id="plant-svg">
-          <path d="M60 140 L140 140 L130 180 L70 180 Z" fill="#424B54" />
-          <line id="stem" x1="100" y1="140" x2="100" y2="140" stroke-width="6" stroke-linecap="round" />
-          <g id="leaves-group"></g>
-          <circle id="flower" cx="100" cy="140" r="0" fill="#FFCA2C" />
-        </svg>
-      </div>
+  
+  <div id="category-scores" style="margin-top:10px; font-size:0.95rem;">
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <div><strong>Cleanliness:</strong> <span id="score-clean">—</span></div>
+      <div><strong>Correctness:</strong> <span id="score-correct">—</span></div>
+      <div><strong>Structure:</strong> <span id="score-structure">—</span></div>
+    </div>
+  </div>
+
+  <div id="plant-wrapper">
+    <svg viewBox="0 0 200 200" id="plant-svg">
+      <path d="M60 140 L140 140 L130 180 L70 180 Z" fill="#424B54" />
+      <line id="stem" x1="100" y1="140" x2="100" y2="140" stroke-width="6" stroke-linecap="round" />
+      <g id="leaves-group"></g>
+      <circle id="flower" cx="100" cy="140" r="0" fill="#FFCA2C" />
+    </svg>
+  </div>
+</section>
+
+
+      <div class="score-container">
     </section>
   </main>
 
