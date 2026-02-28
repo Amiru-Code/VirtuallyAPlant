@@ -4,14 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Virtually a Plant</title>
-
-    <!-- Your styles (note relative path from Homepage/) -->
     <link rel="stylesheet" href="../styles/style.css" />
-
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-
-    <link rel="icon" type="image/x-icon" href="Homepage/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../Homepage/favicon.ico" />
 </head>
 <body>
 
@@ -29,61 +24,48 @@
       <label for="file-upload" class="upload-box">
         <span class="upload-title">Upload File</span>
         <span class="file-info">Supported: .java, .py, .js, .html, .css</span>
-      </label>
-      <input type="file" id="file-upload" />
+        <pre id="file-content"></pre> </label>
 
-      <div id="file-preview" style="display:none; margin-top:12px;">
-        <div style="font-size:0.9rem; color:#666; margin-bottom:6px;">
-          <span id="file-meta"></span>
-        </div>
-        <pre id="file-content" style="
-          background:#0b0f14;
-          color:#e3e8ef;
-          padding:12px;
-          border-radius:6px;
-          max-height:240px;
-          overflow:auto;
-          white-space:pre;
-          tab-size:2;
-          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
-          font-size: 12px;
-          line-height: 1.35;
-        "></pre>
-      </div>
-
+      <input type="file" id="file-upload" style="display: none;" />
+      <div id="file-meta" style="font-size:0.8rem; color: var(--second-font); margin-top: 5px;"></div>
       <button type="button" class="submit-btn">Submit</button>
     </section>
 
     <section class="right-side">
-        <section class="right-side">
-  <div class="score-container">
-    <span id="score-value">XX</span>%
-  </div>
+      <div class="score-container">
+        <span id="score-value">XX</span>%
+      </div>
 
-  
-  <div id="category-scores" style="margin-top:10px; font-size:0.95rem;">
-  <div style="display:flex; gap:12px; flex-wrap:wrap;">
-    <div>
-      <a href="../Cleanliness/details.html" class="score-detail-link" target="_blank" rel="noopener">
-          <strong>Cleanliness:</strong> <span id="score-clean">—</span>
-      </a>
-      <div class="advice-text" id="advice-clean"></div>
-    </div>
-    <div>
-      <a href="../Correctness/details.html" class="score-detail-link" target="_blank" rel="noopener">
-          <strong>Correctness:</strong> <span id="score-correct">—</span>
-      </a>
-      <div class="advice-text" id="advice-correct"></div>
-    </div>
-    <div>
-      <a href="../Structure/details.html" class="score-detail-link" target="_blank" rel="noopener">
-          <strong>Structure:</strong> <span id="score-structure">—</span>
-      </a>
-      <div class="advice-text" id="advice-structure"></div>
-    </div>
+      <div id="category-scores" style="margin-top:10px; font-size:0.95rem;">
+        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content: center;">
+          <div>
+            <a href="../Cleanliness/details.html" class="score-detail-link" target="_blank" rel="noopener">
+                <strong>Cleanliness:</strong> <span id="score-clean">—</span>
+            </a>
+            <div class="advice-text" id="advice-clean"></div>
+          </div>
+          <div>
+            <a href="../Correctness/details.html" class="score-detail-link" target="_blank" rel="noopener">
+                <strong>Correctness:</strong> <span id="score-correct">—</span>
+            </a>
+            <div class="advice-text" id="advice-correct"></div>
+          </div>
+          <div>
+            <a href="../Structure/details.html" class="score-detail-link" target="_blank" rel="noopener">
+                <strong>Structure:</strong> <span id="score-structure">—</span>
+            </a>
+            <div class="advice-text" id="advice-structure"></div>
+          </div>
+        </div>
+      </div>
 
   <div id="plant-wrapper">
-    <img id="plant-image" src="img\plantdead.png">
+    <svg viewBox="0 0 200 200" id="plant-svg">
+      <path d="M60 140 L140 140 L130 180 L70 180 Z" fill="#424B54" />
+      <line id="stem" x1="100" y1="140" x2="100" y2="140" stroke-width="6" stroke-linecap="round" />
+      <g id="leaves-group"></g>
+      <circle id="flower" cx="100" cy="140" r="0" fill="#FFCA2C" />
+    </svg>
   </div>
 </section>
 
@@ -99,6 +81,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="../Homepage/script.js"></script>
 </body>
 </html>
