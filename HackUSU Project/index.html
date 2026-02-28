@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtually Plant</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Virtually Plant</h1>
+    </header>
+
+    <main class="container">
+        <section class="left-side">
+            <div class="intro-text">
+                <h3>Evaluate the efficiency, variable usage and style of your code!</h3>
+                <h3>Upload to Check</h3>
+            </div>
+            
+            <label for="file-upload" class="upload-box">
+                <span class="upload-title">Upload File</span>
+                <span class="file-info">Supported: .java, .py, .js, .html, .css</span>
+            </label>
+            <input type="file" id="file-upload" />
+            
+            <button type="button" class="submit-btn">Submit</button>
+        </section>
+
+        <section class="right-side">
+            <div class="score-container">
+                <span id="score-value">XX</span>%
+            </div>
+            
+            <div id="plant-wrapper">
+                <svg viewBox="0 0 200 200" id="plant-svg">
+                    <path d="M60 140 L140 140 L130 180 L70 180 Z" fill="#424B54" /> <line id="stem" x1="100" y1="140" x2="100" y2="140" stroke-width="6" stroke-linecap="round" />
+                    <g id="leaves-group"></g>
+                    <circle id="flower" cx="100" cy="140" r="0" fill="#FFCA2C" />
+                </svg>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
