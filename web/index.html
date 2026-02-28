@@ -1,11 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Virtually Plant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
+    
+
 </head>
 <body>
-    
+
+    <header class="main-header">
+        <h1>Virtually Plant</h1>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="intro-section">
+            <h2>Intro: what this web do</h2>
+        </section>
+
+        <section class="upload-section">
+            <label for="file-upload" class="custom-upload">
+                <span class="upload-text">Upload File</span>
+                <span class="file-types-info">Type of web file (.java, .py, etc.)</span>
+            </label>
+            <input type="file" id="file-upload" accept=".java,.py,.js,.html,.css" />
+            
+            <button type="button" class="submit-button">Submit</button>
+        </section>
+
+        <section class="plant-display">
+            <div id="planta-container">
+                <svg viewBox="0 0 200 200" id="planta-svg">
+                    <path d="M60 140 L140 140 L130 180 L70 180 Z" class="vaso" />
+                    
+                    <line id="caule" x1="100" y1="140" x2="100" y2="140" />
+                    
+                    <g id="folhas-grupo"></g>
+                    
+                    <g id="flower-group" transform="translate(100, 140)" opacity="0">
+    <!-- Petals -->
+    <ellipse class="petal" cx="0" cy="-12" rx="6" ry="12" fill="#ff66cc"/>
+    <ellipse class="petal" cx="10" cy="-6" rx="6" ry="12" fill="#ff66cc" transform="rotate(45)"/>
+    <ellipse class="petal" cx="12" cy="6" rx="6" ry="12" fill="#ff66cc" transform="rotate(90)"/>
+    <ellipse class="petal" cx="10" cy="16" rx="6" ry="12" fill="#ff66cc" transform="rotate(135)"/>
+    <ellipse class="petal" cx="0" cy="20" rx="6" ry="12" fill="#ff66cc" transform="rotate(180)"/>
+    <ellipse class="petal" cx="-10" cy="16" rx="6" ry="12" fill="#ff66cc" transform="rotate(225)"/>
+    <ellipse class="petal" cx="-12" cy="6" rx="6" ry="12" fill="#ff66cc" transform="rotate(270)"/>
+    <ellipse class="petal" cx="-10" cy="-6" rx="6" ry="12" fill="#ff66cc" transform="rotate(315)"/>
+
+    <!-- Center -->
+    <circle cx="0" cy="0" r="6" fill="#ffcc00"/>
+</g>
+                </svg>
+            </div>
+            
+            <div class="score-display">
+                <span id="nota-display">XX</span>%
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <nav>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
