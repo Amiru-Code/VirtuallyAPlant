@@ -1,0 +1,83 @@
+{"line":1,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":3,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":4,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":7,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":8,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":9,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":12,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":13,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":14,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":15,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":16,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":17,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":22,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":23,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":24,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":25,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":26,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":27,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":28,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":30,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":31,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":32,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":33,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":34,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":35,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":36,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":37,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":38,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":39,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":40,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":41,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":42,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":45,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":46,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":47,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":17,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":33,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":34,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":35,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":36,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":37,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":38,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":39,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":40,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":41,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":42,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":0,"kind":"duplication","severity":"info","msg":"Duplicate lines detected"}
+{"line":0,"kind":"cleanliness_advice","severity":"info","msg":"Excellent cleanliness! Minor polish only."}
+{"line":0,"kind":"correctness_advice","severity":"info","msg":"Fair correctness; watch for edge cases and simple\n                        logic mistakes."}
+{"line":0,"kind":"structure_advice","severity":"info","msg":"Excellent structure; code is cleanly organized."}
+{"line":2,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":3,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":4,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":6,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":8,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":14,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":17,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":18,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":19,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":21,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":22,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":24,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":28,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":29,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":31,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":32,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":33,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":34,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":35,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":36,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":37,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":40,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":41,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":42,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":46,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":47,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":48,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":50,"kind":"js_semicolon","severity":"info","msg":"Potential missing semicolon (heuristic)"}
+{"line":49,"kind":"js_loose_equality","severity":"info","msg":"Consider using '===' instead of '==' to avoid coercion surprises"}
+{"line":0,"kind":"duplication","severity":"info","msg":"Duplicate lines detected"}
+{"line":0,"kind":"cleanliness_advice","severity":"info","msg":"Excellent cleanliness! Minor polish only."}
+{"line":0,"kind":"correctness_advice","severity":"info","msg":"Good correctness; a few small logical issues remain."}
+{"line":0,"kind":"structure_advice","severity":"info","msg":"Excellent structure; code is cleanly organized."}
